@@ -1,15 +1,12 @@
 
 
 # --- Imports ---
-import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
-
 
 
 # --- Configuration of the driver ---
@@ -20,7 +17,6 @@ options.add_argument("--start-maximized")
 driver = webdriver.Chrome(options=options)
 driver.implicitly_wait(5)
 wait = WebDriverWait(driver, 10)
-
 
 
 # --- Test Steps ---
@@ -52,7 +48,6 @@ try:
 
     driver.find_element(By.ID, "login-button").click()
 
-
     wait.until(EC.url_to_be("https://www.saucedemo.com/inventory.html"))
     if driver.current_url == "https://www.saucedemo.com/inventory.html":
         print("✅ Succesful login")
@@ -60,14 +55,12 @@ try:
     else:
         print("❌ Unsuccesful login")
 
-
     if driver.title == "Swag Labs":
         print("✅ Title:", driver.title)
     else:
         print("❌ Wrong title:", driver.title)
 
     print(" --------- Test OK --------- \n")
-
 
 
     # --- Inventory page ---
@@ -108,7 +101,6 @@ try:
     print(" --------- Test OK --------- \n")
 
 
-
     # --- add to cart ---
 
     print(" --------- Add to Cart --------- ")
@@ -131,7 +123,6 @@ try:
         print("❌ Cart count is NOT correct")
 
     print(" --------- Test OK --------- \n")
-
 
 
     # --- cart check ---
@@ -166,6 +157,7 @@ try:
     else:
         print("❌ There is NOT one item in the cart")
     print(" --------- Test OK --------- \n")
+
 
 finally:
     print(" --------- Test ended --------- \n")

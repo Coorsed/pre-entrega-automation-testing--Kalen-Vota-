@@ -17,7 +17,3 @@ python -m pytest --html=reports/report_calculadora.html
 
 To open the report go to /Calculadora/reports folder and open report_calculadora.html with live server
 
-
-
-
-
