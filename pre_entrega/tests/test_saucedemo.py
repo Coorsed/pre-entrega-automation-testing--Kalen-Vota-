@@ -2,34 +2,7 @@
 
 # --- Imports ---
 
-import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from utils.helpers import *
-
-
-# --- Configuration of the driver ---
-
-@pytest.fixture
-def driver():
-    options = Options()
-    options.add_argument("--log-level=3")
-    options.add_argument("--start-maximized")
-    driver = webdriver.Chrome(options=options)
-    driver.implicitly_wait(5)
-    yield driver
-    driver.quit()
-
-
-# --- Configuration of the explicit wait ---
-
-@pytest.fixture
-def wait(driver):
-    return WebDriverWait(driver, 10)
-
 
 # --- Test Steps ---
 
@@ -38,6 +11,7 @@ def test_login(driver,wait):
     """
     --------- Login test ---------
     Verify that users can login with valid username/password and enter in /inventory site
+
     """
 
     # Open the website 
@@ -79,15 +53,16 @@ def test_login(driver,wait):
 
 
 
-def test_inventory(driver):
+def test_inventory(driver, wait):
 
     """
     --------- Inventory Page test ---------
     Function: verify that the title is OK, that there is at least one product, and the interface elementes are present.
+
     """
 
     #auto-login
-    auto_login(driver)
+    auto_login(driver, wait)
 
     #Verify the title
     assert driver.find_element(By.CSS_SELECTOR, "div.header_secondary_container .title").text == "Products", "❌ Products title is NOT correct"
@@ -124,12 +99,19 @@ def test_inventory(driver):
 
     print(" --------- ✅ Test OK ✅ --------- ")
 
-def test_cart(driver,wait):
-    # --------- Add to Cart ---------
 
-    #auto login + auto inventory + first product
-    auto_inventory(driver)
-    first_product_name, first_product_price = auto_inventory(driver)
+
+def test_cart(driver, wait):
+
+    """
+    --------- Add to Cart ---------
+    Function: Verify that products can be added to the cart and that the cart has the same item that was added.
+
+    """
+
+    #auto login + auto inventory + first product save
+    auto_inventory(driver, wait)
+    first_product_name, first_product_price = auto_inventory(driver,wait)
 
     #add to cart
     driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
