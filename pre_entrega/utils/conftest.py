@@ -5,7 +5,6 @@
 import pytest
 from datetime import datetime
 import os
-from pytest_html import extras
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
@@ -44,7 +43,7 @@ def run_dir(request):
 # --- Configuration of reports ---
 
 def pytest_configure(config):
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
     # --- Search /reports ---
     reports_dir = os.path.join(base_dir, "pre_entrega", "reports")
