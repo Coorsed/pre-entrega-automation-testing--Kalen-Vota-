@@ -1,6 +1,6 @@
 
 
-# ⚡Pre-delivery Final Project - Testing Automation
+# ⚡Pre-submission Final Project - Testing Automation
 
 In this project we apply **Python** and **Selenium WebDriver** to test  **SauceDemo** website.
 
