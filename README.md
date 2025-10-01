@@ -22,6 +22,7 @@ This project automates repetitive tests to save time and resources, optimizing t
 ```text
 📁 pre_entrega/
 ├──📁 reports/                          # Reports folder (auto-created)
+│   │
 │   ├──📁 run_2025-09-25_19-12-34       # (Example) Test run with fail
 │   │   ├── 📄 report.html              # Test report
 │   │   └── 📸 test_cart_2025-09-25.png # Screenshot of the fail
@@ -66,7 +67,7 @@ python -m pytest -v
 
 ▶️ Automated login
 
-- With valid and invalid credentials
+- With valid credentials
 
 ▶️ Catalog verification
 
