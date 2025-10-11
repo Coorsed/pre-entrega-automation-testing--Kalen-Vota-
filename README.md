@@ -41,8 +41,8 @@ This project automates repetitive tests to save time and resources, optimizing t
 │   ├── 📄 conftest.py                  # Pytest configuration
 │   └── 📄 helpers.py                   # Reusable functions
 │
-├📄 pytest.ini                          # Pytest launch options
-└📄 README.md                           # You are here 📌
+📄 pytest.ini                           # Pytest launch options
+📄 README.md                            # You are here 📌
 ```
 ## ⚙️ Dependencies Installation
 
